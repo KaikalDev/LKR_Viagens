@@ -4,8 +4,9 @@ import { useEffect } from 'react'
 
 import { RootReducer } from '../../Store'
 
-import { Container } from './styles'
+import Loader from '../../component/loader'
 import Card from '../../component/card'
+import { Container } from './styles'
 
 import { openModal, setTrips } from '../../Store/reducers/trip'
 import { useGetTripsQuery } from '../../services/api'
@@ -20,7 +21,7 @@ const CardsList = () => {
 
   const { trips } = useSelector((state: RootReducer) => state.trip)
 
-  const { data } = useGetTripsQuery(user_id)
+  const { data, isLoading } = useGetTripsQuery(user_id)
 
   useEffect(() => {
     if (data) {
@@ -29,21 +30,27 @@ const CardsList = () => {
   }, [dispatch, data])
 
   return (
-    <Container>
-      {trips.map((trip) => (
-        <Card
-          key={trip.id}
-          id={trip.id}
-          description={trip.description}
-          departureDate={trip.departureDate}
-          destiny={trip.destiny}
-          returnDate={trip.returnDate}
-          typeDestiny={trip.typeDestiny}
-          typeTrip={trip.typeTrip}
-          onClick={() => dispatch(openModal(trip.id))}
-        />
-      ))}
-    </Container>
+    <>
+      {isLoading ? (
+        <Loader />
+      ) : (
+        <Container>
+          {trips.map((trip) => (
+            <Card
+              key={trip.id}
+              id={trip.id}
+              description={trip.description}
+              departureDate={trip.departureDate}
+              destiny={trip.destiny}
+              returnDate={trip.returnDate}
+              typeDestiny={trip.typeDestiny}
+              typeTrip={trip.typeTrip}
+              onClick={() => dispatch(openModal(trip.id))}
+            />
+          ))}
+        </Container>
+      )}
+    </>
   )
 }
 

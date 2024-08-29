@@ -39,12 +39,6 @@ export const Container = styled.div`
       display: flex;
     }
   }
-
-  button {
-    background-color: transparent;
-    border: none;
-    cursor: pointer;
-  }
 `
 
 export const CardContainer = styled.div`

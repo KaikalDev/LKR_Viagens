@@ -31,3 +31,9 @@ export const ButtonLink = styled.button<{ $variant: Props['variant'] }>`
     color: ${Colors.primary};
   }
 `
+
+export const ButtonIcon = styled.button`
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+`

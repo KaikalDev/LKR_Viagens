@@ -72,6 +72,16 @@ export const Overlay = styled.div`
     filter: blur(10px);
   }
 
+  &.clean {
+    background-color: transparent;
+
+    div {
+      background-color: transparent;
+      top: 0;
+      left: 0;
+    }
+  }
+
   @media (max-width: ${Breakpoints.tablet}) {
     div {
       width: 80%;

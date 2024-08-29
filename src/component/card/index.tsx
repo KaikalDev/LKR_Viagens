@@ -12,6 +12,8 @@ import { validationSchemaAdd } from '../../utils/validationSchemas/Add'
 import { getDate, getDescription } from '../../utils'
 import { useParams } from 'react-router-dom'
 import * as Api from '../../services/api'
+import Loader from '../loader'
+import Button from '../Button'
 
 type Props = {
   id: number
@@ -117,135 +119,167 @@ const Card = ({
   })
 
   return (
-    <S.Container>
-      {isEditing ? (
-        <S.EditContainer>
-          <form onSubmit={form.handleSubmit}>
-            <ul className="infos">
-              <li>
-                Destino:
-                <input
-                  id="destiny"
-                  name="destiny"
-                  type="text"
-                  onChange={form.handleChange}
-                  value={form.values.destiny}
-                />
-              </li>
-              <li>
-                Data da viagem:
-                <input
-                  id="departureDate"
-                  name="departureDate"
-                  type="date"
-                  onChange={form.handleChange}
-                  value={form.values.departureDate}
-                />
-              </li>
-              <li>
-                Data da chegada:
-                <input
-                  id="returnDate"
-                  name="returnDate"
-                  type="date"
-                  onChange={form.handleChange}
-                  value={form.values.returnDate}
-                />
-              </li>
-              <li>
-                <select
-                  id="typeDestiny"
-                  name="typeDestiny"
-                  onChange={form.handleChange}
-                  value={form.values.typeDestiny}
-                >
-                  <option value="nacional">Nacional</option>
-                  <option value="internacional">Internacional</option>
-                </select>
-                <select
-                  id="typeTrip"
-                  name="typeTrip"
-                  onChange={form.handleChange}
-                  value={form.values.typeTrip}
-                >
-                  <option value="lazer">Lazer</option>
-                  <option value="trabalho">Trabalho</option>
-                </select>
-              </li>
-            </ul>
-            <ul className="buttons">
-              <li className="comfirm">
-                <button type="submit" disabled={isEditingTrip}>
-                  <img src={Images.CheckIcon} alt="" />
-                </button>
-              </li>
-              <li className="cancel">
-                <button
-                  type="reset"
-                  onClick={() => setIsEditing(false)}
-                  disabled={isEditingTrip}
-                >
-                  <img src={Images.CloseIcon} alt="" />
-                </button>
-              </li>
-            </ul>
-          </form>
-        </S.EditContainer>
+    <>
+      {isCopying || isDeleting || isEditingTrip ? (
+        <Loader />
       ) : (
-        <S.CardContainer>
-          <ul onClick={onClick} className="infos">
-            <li>
-              Destino:<span>{destiny}</span>
-            </li>
-            <li>
-              Data da viagem:<span>{getDate(departureDate)}</span>
-            </li>
-            <li>
-              Data da chegada:<span>{getDate(returnDate)}</span>
-            </li>
-            <li>
-              <i>
-                <img
-                  title={typeDestiny}
-                  src={
-                    typeDestiny === 'nacional'
-                      ? Images.NationalIcon
-                      : Images.InternationalIcon
-                  }
-                  alt={typeDestiny}
-                />
-              </i>
-              <i>
-                <img
-                  title={typeTrip}
-                  src={
-                    typeTrip === 'lazer' ? Images.LeisureIcon : Images.WorkIcon
-                  }
-                  alt={typeTrip}
-                />
-              </i>
-            </li>
-          </ul>
-          <ul className="buttons">
-            <li>
-              <button onClick={handleRemove} disabled={isDeleting}>
-                <img src={Images.RemoveIcon} alt="" />
-              </button>
-            </li>
-            <li>
-              <button onClick={handleCopy} disabled={isCopying}>
-                <img src={Images.CopyIcon} alt="" />
-              </button>
-            </li>
-            <li>
-              <button onClick={() => setIsEditing(true)}>
-                <img src={Images.EditIcon} alt="" />
-              </button>
-            </li>
-          </ul>
-        </S.CardContainer>
+        <S.Container>
+          {isEditing ? (
+            <S.EditContainer>
+              <form onSubmit={form.handleSubmit}>
+                <ul className="infos">
+                  <li>
+                    Destino:
+                    <input
+                      id="destiny"
+                      name="destiny"
+                      type="text"
+                      onChange={form.handleChange}
+                      value={form.values.destiny}
+                    />
+                  </li>
+                  <li>
+                    Data da viagem:
+                    <input
+                      id="departureDate"
+                      name="departureDate"
+                      type="date"
+                      onChange={form.handleChange}
+                      value={form.values.departureDate}
+                    />
+                  </li>
+                  <li>
+                    Data da chegada:
+                    <input
+                      id="returnDate"
+                      name="returnDate"
+                      type="date"
+                      onChange={form.handleChange}
+                      value={form.values.returnDate}
+                    />
+                  </li>
+                  <li>
+                    <select
+                      id="typeDestiny"
+                      name="typeDestiny"
+                      onChange={form.handleChange}
+                      value={form.values.typeDestiny}
+                    >
+                      <option value="nacional">Nacional</option>
+                      <option value="internacional">Internacional</option>
+                    </select>
+                    <select
+                      id="typeTrip"
+                      name="typeTrip"
+                      onChange={form.handleChange}
+                      value={form.values.typeTrip}
+                    >
+                      <option value="lazer">Lazer</option>
+                      <option value="trabalho">Trabalho</option>
+                    </select>
+                  </li>
+                </ul>
+                <ul className="buttons">
+                  <li className="comfirm">
+                    <Button
+                      variant="icon"
+                      type="submit"
+                      disabled={isEditingTrip}
+                      title="Confirmar"
+                    >
+                      <img src={Images.CheckIcon} alt="" />
+                    </Button>
+                  </li>
+                  <li className="cancel">
+                    <Button
+                      variant="icon"
+                      type="reset"
+                      onClick={() => setIsEditing(false)}
+                      disabled={isEditingTrip}
+                      title="Cancelar"
+                    >
+                      <img src={Images.CloseIcon} alt="" />
+                    </Button>
+                  </li>
+                </ul>
+              </form>
+            </S.EditContainer>
+          ) : (
+            <S.CardContainer>
+              <ul onClick={onClick} className="infos">
+                <li>
+                  Destino:<span>{destiny}</span>
+                </li>
+                <li>
+                  Data da viagem:<span>{getDate(departureDate)}</span>
+                </li>
+                <li>
+                  Data da chegada:<span>{getDate(returnDate)}</span>
+                </li>
+                <li>
+                  <i>
+                    <img
+                      title={typeDestiny}
+                      src={
+                        typeDestiny === 'nacional'
+                          ? Images.NationalIcon
+                          : Images.InternationalIcon
+                      }
+                      alt={typeDestiny}
+                    />
+                  </i>
+                  <i>
+                    <img
+                      title={typeTrip}
+                      src={
+                        typeTrip === 'lazer'
+                          ? Images.LeisureIcon
+                          : Images.WorkIcon
+                      }
+                      alt={typeTrip}
+                    />
+                  </i>
+                </li>
+              </ul>
+              <ul className="buttons">
+                <li>
+                  <Button
+                    type="button"
+                    variant="icon"
+                    onClick={handleRemove}
+                    disabled={isDeleting}
+                    title="Clique aqui para deletar o item"
+                  >
+                    <img src={Images.RemoveIcon} alt="" />
+                  </Button>
+                </li>
+                <li>
+                  <Button
+                    type="button"
+                    variant="icon"
+                    onClick={handleCopy}
+                    disabled={isCopying}
+                    title="Clique aqui para copiar o item"
+                  >
+                    <img src={Images.CopyIcon} alt="" />
+                  </Button>
+                </li>
+                <li>
+                  <Button
+                    type="button"
+                    variant="icon"
+                    onClick={() => setIsEditing(true)}
+                    title="Clique aqui para editar o item"
+                  >
+                    <img src={Images.EditIcon} alt="" />
+                  </Button>
+                </li>
+              </ul>
+            </S.CardContainer>
+          )}
+        </S.Container>
       )}
-    </S.Container>
+    </>
   )
 }
 

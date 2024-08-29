@@ -8,6 +8,7 @@ import { logout } from '../../Store/reducers/user'
 import { useGetUsersByIdQuery } from '../../services/api'
 import { IdParams } from '../../container/CardsList'
 import { clear } from '../../Store/reducers/trip'
+import Button from '../Button'
 
 const User = () => {
   const { user_id } = useParams() as IdParams
@@ -30,11 +31,16 @@ const User = () => {
         <img src={Images.UserIcon} alt="Icone de usuario" />
       </i>
       <h4>{user}</h4>
-      <button onClick={getLogaut} title="Clique aqui para sair da conta">
+      <Button
+        type="button"
+        variant="icon"
+        onClick={getLogaut}
+        title="Clique aqui para sair da conta"
+      >
         <i>
           <img src={Images.LogoutIcon} alt="logout" />
         </i>
-      </button>
+      </Button>
     </S.UserContainer>
   )
 }

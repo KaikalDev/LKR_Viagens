@@ -17,7 +17,7 @@ type PurchasePayloadTrip = {
 
 const api = createApi({
   baseQuery: fetchBaseQuery({
-    baseUrl: 'http://localhost:8000'
+    baseUrl: 'https://api-lkr-viagens-5.onrender.com'
   }),
   endpoints: (builder) => ({
     getUsers: builder.query<User[], void>({

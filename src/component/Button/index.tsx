@@ -1,11 +1,12 @@
 import * as S from './styles'
 
 export type Props = {
-  type: 'button' | 'link' | 'submit'
+  type: 'button' | 'link' | 'submit' | 'reset'
   title: string
   children: React.ReactNode
-  variant?: 'primary' | 'secondary'
+  variant?: 'primary' | 'secondary' | 'icon'
   to?: string
+  disabled?: boolean
   onClick?: () => void
 }
 
@@ -14,7 +15,8 @@ const Button = ({
   type,
   title,
   onClick,
-  variant = 'primary'
+  variant = 'primary',
+  disabled
 }: Props) => {
   if (type === 'link') {
     return (
@@ -26,6 +28,17 @@ const Button = ({
       >
         {children}
       </S.ButtonLink>
+    )
+  } else if (variant == 'icon') {
+    return (
+      <S.ButtonIcon
+        disabled={disabled}
+        type={type}
+        onClick={onClick}
+        title={title}
+      >
+        {children}
+      </S.ButtonIcon>
     )
   } else {
     return (
