@@ -1,46 +1,41 @@
-# Getting Started with Create React App
+# Projeto de Viagens - FastAPI & React
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Este projeto consiste em uma aplicação web para gerenciar viagens, utilizando um backend desenvolvido com FastAPI e um frontend desenvolvido com React. A API foi hospedada no Render, enquanto o frontend foi hospedado no Vercel.
 
-## Available Scripts
+## Índice
 
-In the project directory, you can run:
+- [Visão Geral](#visão-geral)
+- [Tecnologias Utilizadas](#tecnologias-utilizadas)
+  - [Backend (FastAPI)](#backend-fastapi)
+  - [Frontend (React)](#frontend-react)
+- [Links](#links)
 
-### `npm start`
+## Visão Geral
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+A aplicação permite que os usuários registrem, editem e excluam suas viagens, com funcionalidades que permitem o gerenciamento de múltiplos usuários. A comunicação entre o frontend e o backend é feita através de requisições HTTP utilizando a API REST.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## Tecnologias Utilizadas
 
-### `npm test`
+### Backend (FastAPI)
+- **FastAPI**: Framework web moderno e rápido para construir APIs com Python 3.7+.
+- **SQLAlchemy**: Biblioteca para ORM (Object Relational Mapping).
+- **Pydantic**: Para validação de dados e criação de modelos.
+- **Uvicorn**: Servidor ASGI para rodar a aplicação FastAPI.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Frontend (React)
+- **React**: Biblioteca JavaScript para construção de interfaces de usuário.
+- **React Router DOM**: Gerenciamento de rotas na aplicação React.
+- **Redux Toolkit**: Ferramenta para gerenciamento de estado global.
+- **Formik**: Biblioteca para criação e gerenciamento de formulários.
+- **Styled Components**: Biblioteca para estilização de componentes React.
+- **Yup**: Validação de esquemas, utilizado junto com o Formik.
 
-### `npm run build`
+### Links
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## API
+- **Deploy no Render**: [https://api-lkr-viagens-5.onrender.com](https://api-lkr-viagens-5.onrender.com)
+- **Repositório no GitHub**: [https://github.com/KaikalDev/api_LKR_viagens](https://github.com/KaikalDev/api_LKR_viagens.git)
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+## React
+- **Deploy no Vercel**: [https://lkr-viagens.vercel.app](https://lkr-viagens.vercel.app)
+- **Repositório no GitHub**: [https://github.com/KaikalDev/LKR_Viagens](https://github.com/KaikalDev/LKR_Viagens.git)
